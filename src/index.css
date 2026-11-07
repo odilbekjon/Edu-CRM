@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────── Dizayn tokenlari: light (standart) ───────── */
+:root {
+  --primary: #3b5bdb;
+  --primary-dark: #2f49b5;
+  --primary-tint: #eef2ff;
+  --ink: #0f172a;
+  --text: #334155;
+  --muted: #64748b;
+  --border: #e6eaf2;
+  --border-strong: #cbd5e1;
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --scroll-thumb: #cbd5e1;
+  --scroll-thumb-hover: #94a3b8;
+  --radius: 12px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 16px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 12px 32px rgba(16, 24, 40, 0.12);
+  color-scheme: light;
+}
+
+/* ───────── dark ───────── */
+:root[data-theme="dark"] {
+  --primary: #5c7cfa;
+  --primary-dark: #4263eb;
+  --primary-tint: #1e2a4d;
+  --ink: #e9edf5;
+  --text: #c5ccdb;
+  --muted: #8893a8;
+  --border: #252f42;
+  --border-strong: #35425c;
+  --bg: #0e121b;
+  --surface: #151b27;
+  --surface-2: #1b2332;
+  --header-bg: rgba(21, 27, 39, 0.85);
+  --scroll-thumb: #35425c;
+  --scroll-thumb-hover: #4a5a7a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Rejim almashganda yumshoq o'tish (faqat asosiy sirtlar) */
+body,
+header,
+main {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Yangi, ingichka scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+
+::selection {
+  background: var(--primary-tint);
+  color: var(--primary-dark);
+}
+
+/* Native forma elementlari ham rejimga mos bo'lsin */
+input,
+select,
+textarea {
+  color: var(--ink);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+select option {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* Sahifa almashganda yengil animatsiya */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-in {
+  /* "both" emas: yakunda transform qolsa, ichidagi fixed (drawer) elementlar noto'g'ri joylashadi */
+  animation: page-in 0.28s ease backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-in {
+    animation: none;
+  }
+}
